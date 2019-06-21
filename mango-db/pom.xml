@@ -9,14 +9,16 @@
 
 	<name>mango-db</name>
 
-    <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<app.runtime>4.2.0</app.runtime>
-		<mule.maven.plugin.version>3.2.7</mule.maven.plugin.version>
-	</properties>
-
+   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+     
+    <cloudhub.username>mouli3</cloudhub.username>
+    <cloudhub.password>Mouli143@</cloudhub.password>
+     
+    <mule.version>3.8.1</mule.version>
+    <mule.tools.version>1.2</mule.tools.version>
+</properties>
 	<build>
 		<plugins>
 			<plugin>
@@ -27,6 +29,15 @@
 				<configuration>
 				</configuration>
 			</plugin>
+			 <plugin>
+             <groupId>org.mule.tools.maven</groupId>
+             <artifactId>mule-app-maven-plugin</artifactId>
+             <version>1.0</version>
+             <extensions>true</extensions>
+             <configuration>
+                 <copyToAppsDirectory>true</copyToAppsDirectory>
+             </configuration>
+         </plugin>
 			<plugin>
         <groupId>org.mule.tools.maven</groupId>
         <artifactId>mule-maven-plugin</artifactId>
@@ -34,7 +45,7 @@
         <configuration>
           <deploymentType>cloudhub</deploymentType>
           <muleVersion>3.9.1</muleVersion> 
-          <username>mouli2</username> 
+          <username>mouli3</username> 
           <password>Mouli143@</password> 
           <applicationName>mango-db</applicationName>
           <environment>Sandbox</environment> 
@@ -90,6 +101,10 @@
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
+    
+	
+
+    
 
 	<repositories>
           <repository>
