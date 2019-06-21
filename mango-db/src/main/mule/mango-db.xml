@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:mongo="http://www.mulesoft.org/schema/mule/mongo" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/mongo http://www.mulesoft.org/schema/mule/mongo/current/mule-mongo.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="be5a6335-e454-42b8-b1f4-f9f96685a016" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<mongo:config name="MongoDB_Config" doc:name="MongoDB Config" doc:id="821ed7ec-193c-4d5d-b0ad-f5bd42788185" >
+		<mongo:connection database="lion" />
+	</mongo:config>
+	<flow name="mango-dbFlow" doc:id="2c8fb9f2-7995-4008-9005-0e5b7fa37cd0" >
+		<http:listener doc:name="Listener" doc:id="87008201-2ff0-4e4c-952e-17c7599ba2a4" config-ref="HTTP_Listener_config" path="/mango"/>
+		<mongo:create-collection doc:name="Create collection" doc:id="8e70eedf-cf9a-402f-b7b0-d226fce9bf14" config-ref="MongoDB_Config" collectionName="lions"/>
+		<logger level="INFO" doc:name="Logger" doc:id="a9cc5ec8-a979-44b9-8a5a-0c695634ab41" message="#[payload]"/>
+	</flow>
+</mule>
